@@ -1,7 +1,7 @@
 from maths.geometric_object import Ray
 from maths.vector3d import Vector3D
 from multiprocessing import Manager, Process
-from rendering.light import AmbientLight, DirectionalLight, PointLight
+from rendering.lights import AmbientLight, DirectionalLight, PointLight
 from rendering.objects import Plane, Sphere
 from threading import Thread
 from rendering.color import Color
