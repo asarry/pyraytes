@@ -27,12 +27,12 @@ class Plane(Object):
         self.intercept = intercept
 
     def intersection(self, ray):
-        div = Vector3D.dot(ray.direction, self.normal)
-        if div == 0:  # Plane and ray are parallel!
+        dot_res = Vector3D.dot(ray.direction, self.normal)
+        if dot_res == 0:
             return None
-        t = -(Vector3D.dot(ray.origin, self.normal) + self.intercept) / div
-        if t > 0:
-            return t
+        dist = -(Vector3D.dot(ray.origin, self.normal) + self.intercept) / dot_res
+        if dist > 0:
+            return dist
         else:
             return None
 
@@ -40,23 +40,7 @@ class Plane(Object):
         return self.normal
 
     def color_at(self, position):
-        return self.material.color
-
-
-class CheckeredPlane(Plane):
-    def __init__(self, material, intercept, cell_size, cell_color):
-        super().__init__(material, Vector3D(0, 1, 0), intercept)
-        self.cell_size = cell_size
-        self.cell_color = cell_color
-
-    def color_at(self, position):
-        checker = math.floor(position.x / self.cell_size) + math.floor(
-            position.z / self.cell_size
-        )
-        if checker % 2 == 0:
-            return self.material.color
-        else:
-            return self.cell_color
+        return self.material.color_at(position)
 
 
 class Sphere(Object):
