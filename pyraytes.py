@@ -5,7 +5,7 @@ from rendering.camera import Camera
 from rendering.engine import Engine
 from rendering.image import Image
 from rendering.lights import AmbientLight, DirectionalLight
-from rendering.objects import CheckerboardUpPlane, Material, Sphere
+from rendering.objects import CheckeredPlane, Material, Sphere
 from rendering.scene import Scene
 from rendering.color import Color
 
@@ -23,7 +23,7 @@ if __name__ == "__main__":
     scene = Scene()
 
     scene.objects.append(
-        CheckerboardUpPlane(Material(WHITE, 1, 0.1, 1, 0.3), 200, 200, BLACK)
+        CheckeredPlane(Material(WHITE, 1, 0.1, 1, 0.3), 200, 200, BLACK)
     )
     scene.objects.append(
         Sphere(Material(RED, 1, 1, 8, 0.5), Vector3D(140, -100, 0), 100)
