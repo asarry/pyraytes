@@ -1,5 +1,5 @@
-from maths.geometric_object import Ray
 from maths.vector3d import Vector3D
+from rendering.ray import Ray
 import math
 
 
