@@ -4,7 +4,7 @@ from maths.vector3d import Vector3D
 from rendering.camera import Camera
 from rendering.engine import Engine
 from rendering.image import Image
-from rendering.light import AmbientLight, DirectionalLight
+from rendering.lights import AmbientLight, DirectionalLight
 from rendering.objects import CheckerboardUpPlane, Material, Sphere
 from rendering.scene import Scene
 from rendering.color import Color
