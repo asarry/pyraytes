@@ -28,6 +28,11 @@ class Vector3D:
     def normalize(self):
         return self / self.length()
 
+    def reflect(self, vec):
+        return (
+            self * Vector3D.dot(self, vec) / Vector3D.dot(self, self) * 2 - vec
+        ).normalize()
+
     def dot(a, b):
         return a.x * b.x + a.y * b.y + a.z * b.z
 
@@ -35,7 +40,3 @@ class Vector3D:
         return Vector3D(
             a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x
         )
-
-    def reflect(self, vec):
-        mirror = self * Vector3D.dot(self, vec) / Vector3D.dot(self, self)
-        return (mirror * 2 - vec).normalize()
