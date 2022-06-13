@@ -56,4 +56,4 @@ if __name__ == "__main__":
     eng.render()
     print("Done! Saving...")
 
-    f.save_ppm("result.ppm", f)
+    f.save_as_ppm("result.ppm", f)

@@ -17,13 +17,9 @@ class Image:
             for w in range(self.width):
                 self.data[h][w] = color
 
-    def save_ppm(self, name, frame):
-        with io.open(name, mode="wb") as f:
-            f.write(b"P6 ")
-            f.write(str(frame.width).encode("ascii"))
-            f.write(b" ")
-            f.write(str(frame.height).encode("ascii"))
-            f.write(b" 255\n")
-            for row in reversed(frame.data):
+    def save_as_ppm(self, name, image):
+        with io.open(name, mode="wb") as file:
+            file.write(bytes(f"P6 {image.width} {image.height} 255\n", "ascii"))
+            for row in reversed(image.data):
                 for color in row:
-                    f.write(color.get_bytes())
+                    file.write(color.get_bytes())

@@ -13,11 +13,11 @@ class Color:
             ]
         )
 
-    def __add__(self, col):
-        return Color(self.r + col.r, self.g + col.g, self.b + col.b)
+    def __add__(self, color):
+        return Color(self.r + color.r, self.g + color.g, self.b + color.b)
 
-    def __sub__(self, col):
-        return Color(self.r - col.r, self.g - col.g, self.b - col.b)
+    def __sub__(self, color):
+        return Color(self.r - color.r, self.g - color.g, self.b - color.b)
 
     def __mul__(self, other):
         if isinstance(other, Color):

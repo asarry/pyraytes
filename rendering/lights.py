@@ -16,8 +16,10 @@ class DirectionalLight(Light):
 
 
 class PointLight(Light):
-    def __init__(self, color, position, intensity, atten_factors=(1.0, 0.1, 0.01)):
+    def __init__(
+        self, color, position, intensity, attenuation_factors=(1.0, 0.1, 0.01)
+    ):
         super().__init__(color)
         self.position = position
         self.intensity = intensity
-        self.atten_factors = atten_factors
+        self.attenuation_factors = attenuation_factors
