@@ -70,7 +70,7 @@ class Engine:
 
     def _is_in_shadow(self, ray, target):
         for obj in self.environment.objects:
-            landa = obj.intersection(ray)
+            landa = obj.intersect(ray)
             if landa:
                 if target:
                     dist = (target - ray.origin).length()
@@ -89,7 +89,7 @@ class Engine:
         least_landa = None
         nearest_obj = None
         for obj in self.environment.objects:
-            landa = obj.intersection(ray)
+            landa = obj.intersect(ray)
             if landa:
                 if not least_landa or landa < least_landa:
                     least_landa = landa
