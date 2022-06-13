@@ -6,16 +6,16 @@ class Image:
         self.width = width
         self.height = height
         self.data = []
-        for h in range(height):
+        for _ in range(height):
             row = []
-            for w in range(width):
+            for _ in range(width):
                 row.append(color)
             self.data.append(row)
 
     def clear(self, color):
-        for h in range(self.height):
-            for w in range(self.width):
-                self.data[h][w] = color
+        for i in range(self.height):
+            for j in range(self.width):
+                self.data[i][j] = color
 
     def save_as_ppm(self, name, image):
         with io.open(name, mode="wb") as file:
