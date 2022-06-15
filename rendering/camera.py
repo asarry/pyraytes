@@ -4,6 +4,8 @@ import math
 
 
 class Camera:
+    """A Camera has a position a direction, an indicator as well as an aspect ratio and a field of view."""
+
     def __init__(self, position, direction, up, aspect_ratio, fov=math.pi / 4):
         self.position = position
         self.direction = direction
@@ -18,6 +20,7 @@ class Camera:
         self._up = Vector3D.cross(self.direction, self._right).normalize()
 
     def corresponding_ray(self, image_size, pixel_index):
+        """Returns the ray corresponding to a specific pixel."""
         pixel_pos = (
             self.direction
             + self._right * self._width * (pixel_index[0] / image_size[0] - 0.5)
@@ -27,4 +30,5 @@ class Camera:
         return Ray(self.position, (pixel_pos).normalize())
 
     def create_lookat(position, target, up, aspect_ratio, fov=math.pi / 4):
+        """Creates a camera looking at a given target."""
         return Camera(position, (target - position).normalize(), up, aspect_ratio, fov)
