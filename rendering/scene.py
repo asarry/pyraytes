@@ -1,5 +1,5 @@
 class Scene:
-    """A Scene has contains multiple objects as well as multiple lights."""
+    """A Scene contains multiple objects as well as multiple lights."""
 
     def __init__(self, objects=[], lights=[]):
         self.objects = objects
