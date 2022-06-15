@@ -2,6 +2,8 @@ import io
 
 
 class Image:
+    """An Image has a width, a height, an initial color and can be saved in specific formats."""
+
     def __init__(self, width, height, color):
         self.width = width
         self.height = height
@@ -12,14 +14,10 @@ class Image:
                 row.append(color)
             self.data.append(row)
 
-    def clear(self, color):
-        for i in range(self.height):
-            for j in range(self.width):
-                self.data[i][j] = color
-
-    def save_as_ppm(self, name, image):
+    def save_as_ppm(self, name):
+        """Save the image with the given name in the PPM format."""
         with io.open(name, mode="wb") as file:
-            file.write(bytes(f"P6 {image.width} {image.height} 255\n", "ascii"))
-            for row in reversed(image.data):
+            file.write(bytes(f"P6 {self.width} {self.height} 255\n", "ascii"))
+            for row in reversed(self.data):
                 for color in row:
                     file.write(color.get_bytes())
