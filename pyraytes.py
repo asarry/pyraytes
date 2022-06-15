@@ -52,4 +52,4 @@ if __name__ == "__main__":
 
     engine = Engine(camera, scene, image, 4, 8)
     engine.render()
-    image.save_as_ppm("result.ppm", image)
+    image.save_as_ppm("result.ppm")
