@@ -3,6 +3,8 @@ import math
 
 
 class Material:
+    """A Material has multiple properties such as a color, a diffuse rate, a specular rate, a specular exponent and a reflection rate. It defines a color_at method as well."""
+
     def __init__(
         self, color, diffuse_rate, specular_rate, specular_exponent, reflection_rate
     ):
@@ -13,10 +15,13 @@ class Material:
         self.reflection_rate = reflection_rate
 
     def color_at(self, position):
+        """Returns the color of this material at a given position."""
         return self.color
 
 
 class CheckeredMaterial(Material):
+    """A CheckeredMaterial inherits from the Material class and requires a secondary color as well as a cell size."""
+
     def __init__(
         self,
         prim_color,
@@ -34,6 +39,7 @@ class CheckeredMaterial(Material):
         self.cell_size = cell_size
 
     def color_at(self, position):
+        """Returns the color of this material at a given position."""
         if (
             math.floor(position.x / self.cell_size)
             + math.floor(position.z / self.cell_size)
