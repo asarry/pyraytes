@@ -20,7 +20,7 @@ MAGENTA = Color(1, 0, 1)
 CYAN = Color(0, 1, 1)
 
 if __name__ == "__main__":
-    f = Image(2000, 2000, BLACK)
+    image = Image(2000, 2000, BLACK)
     scene = Scene()
 
     scene.objects.append(
@@ -29,13 +29,13 @@ if __name__ == "__main__":
         )
     )
     scene.objects.append(
-        Sphere(Material(RED, 1, 1, 8, 0.5), Vector3D(140, -100, 0), 100)
+        Sphere(Material(MAGENTA, 1, 1, 8, 0.5), Vector3D(140, -100, 0), 100)
     )
     scene.objects.append(
         Sphere(Material(YELLOW, 1, 1, 8, 0.5), Vector3D(0, 0, 450), 200)
     )
     scene.objects.append(
-        Sphere(Material(GREEN, 1, 1, 8, 0.5), Vector3D(-140, -90, 0), 110)
+        Sphere(Material(CYAN, 1, 1, 8, 0.5), Vector3D(-140, -90, 0), 110)
     )
 
     scene.lights.append(AmbientLight(Color(0.05, 0.05, 0.05)))
@@ -43,17 +43,13 @@ if __name__ == "__main__":
         DirectionalLight(Color(0.1, 0.1, 0.1), Vector3D(1, -1, 1).normalize(), 6)
     )
 
-    cam = Camera.create_lookat(
+    camera = Camera.create_lookat(
         Vector3D(0, 324, -532),
         Vector3D(0, 0, 80),
         Vector3D(0, 1, 0),
-        f.width / f.height,
+        image.width / image.height,
     )
 
-    eng = Engine(cam, scene, f, 4, 8)
-
-    print("Rendering...")
-    eng.render()
-    print("Done! Saving...")
-
-    f.save_as_ppm("result.ppm", f)
+    engine = Engine(camera, scene, image, 4, 8)
+    engine.render()
+    image.save_as_ppm("result.ppm", image)
