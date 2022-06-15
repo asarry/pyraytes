@@ -1,10 +1,13 @@
 class Color:
+    """A Color is defined by its red, green and blue components."""
+
     def __init__(self, r, g, b):
         self.r = r
         self.g = g
         self.b = b
 
     def get_bytes(self):
+        """Returns the color in the byte format."""
         return bytes(
             [
                 int(min(self.r * 255, 255)),
