@@ -5,7 +5,7 @@ import math
 
 
 class Object:
-    """An Object got a material attached to it and must implement an intersect method, a normal_at method and a color_at method."""
+    """An Object has a material attached to it and must implement an intersect method, a normal_at method and a color_at method."""
 
     def __init__(self, material):
         self.material = material
@@ -24,7 +24,7 @@ class Object:
 
 
 class Plane(Object):
-    """A Plane got a normal and an intercept."""
+    """A Plane has a normal and an intercept."""
 
     def __init__(self, material, normal, intercept):
         super().__init__(material)
@@ -52,7 +52,7 @@ class Plane(Object):
 
 
 class Sphere(Object):
-    """A Sphere got a position and a radius."""
+    """A Sphere has a position and a radius."""
 
     def __init__(self, material, position, radius):
         super().__init__(material)
