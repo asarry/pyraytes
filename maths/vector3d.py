@@ -2,6 +2,8 @@ import math
 
 
 class Vector3D:
+    """A Vector3D is defined by its x, y and z components."""
+
     def __init__(self, x, y, z):
         self.x = x
         self.y = y
