@@ -2,13 +2,13 @@
 
 from maths.vector3d import Vector3D
 from rendering.camera import Camera
+from rendering.color import Color
 from rendering.engine import Engine
 from rendering.image import Image
 from rendering.lights import AmbientLight, DirectionalLight
-from rendering.material import Material, CheckeredMaterial
+from rendering.material import CheckeredMaterial, Material
 from rendering.objects import Plane, Sphere
 from rendering.scene import Scene
-from rendering.color import Color
 
 BLACK = Color(0, 0, 0)
 WHITE = Color(1, 1, 1)

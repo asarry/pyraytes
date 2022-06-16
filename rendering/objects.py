@@ -1,7 +1,8 @@
+import math
+
 from maths.vector3d import Vector3D
 from rendering.color import Color
 from rendering.material import Material
-import math
 
 
 class Object:

@@ -1,5 +1,6 @@
-from rendering.color import Color
 import math
+
+from rendering.color import Color
 
 
 class Material:

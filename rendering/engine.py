@@ -1,10 +1,11 @@
-from maths.vector3d import Vector3D
 from multiprocessing import Manager, Process
+from threading import Thread
+
+from maths.vector3d import Vector3D
+from rendering.color import Color
 from rendering.lights import AmbientLight, DirectionalLight, PointLight
 from rendering.objects import Plane, Sphere
 from rendering.ray import Ray
-from threading import Thread
-from rendering.color import Color
 
 
 class Engine:

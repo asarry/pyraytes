@@ -1,6 +1,7 @@
+import math
+
 from maths.vector3d import Vector3D
 from rendering.ray import Ray
-import math
 
 
 class Camera:
