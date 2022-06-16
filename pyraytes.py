@@ -5,7 +5,7 @@ from rendering.camera import Camera
 from rendering.color import Color
 from rendering.engine import Engine
 from rendering.image import Image
-from rendering.lights import AmbientLight, DirectionalLight
+from rendering.lights import AmbientLight, DirectionalLight, PointLight
 from rendering.material import CheckeredMaterial, Material
 from rendering.objects import Plane, Sphere
 from rendering.scene import Scene
@@ -38,9 +38,17 @@ if __name__ == "__main__":
         Sphere(Material(CYAN, 1, 1, 8, 0.5), Vector3D(-150, 150, 50), 50)
     )
 
-    scene.lights.append(AmbientLight(Color(0.05, 0.05, 0.05)))
+    scene.lights.append(AmbientLight(Color(0.0001, 0.0001, 0.0001)))
     scene.lights.append(
-        DirectionalLight(Color(0.1, 0.1, 0.1), Vector3D(1, -1, 1).normalize(), 6)
+        DirectionalLight(Color(0.1, 0.1, 0.1), Vector3D(1, -1, 1).normalize(), 750)
+    )
+    scene.lights.append(
+        PointLight(
+            Color(0.1, 0.1, 0.1),
+            Vector3D(0, 300, 0).normalize(),
+            100,
+            (0.0001, 0.0001, 0.0001),
+        )
     )
 
     camera = Camera.create_lookat(
