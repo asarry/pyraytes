@@ -83,9 +83,9 @@ class PointLight(Light):
             factor = diffuse_factor + specular_factor
             dist = (self.position - position).length()
             atten = 1.0 / (
-                self.atten_factors[0]
-                + self.atten_factors[1] * dist
-                + self.atten_factors[2] * dist * dist
+                self.attenuation_factors[0]
+                + self.attenuation_factors[1] * dist
+                + self.attenuation_factors[2] * dist * dist
             )
 
             initial_color += self.color * self.intensity * color * factor * atten
