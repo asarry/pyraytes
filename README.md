@@ -1,7 +1,8 @@
 # Pyraytes
 
-Pyraytes is a basic Python raytracer.
-A resulting image can be found under the name image.ppm.
+Pyraytes is a basic Python ray tracer.
+
+![A resulting image](image.png "An example of what can be done with this ray tracer")
 
 ### Helpful ressources
 
