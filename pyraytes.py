@@ -25,17 +25,17 @@ if __name__ == "__main__":
 
     scene.objects.append(
         Plane(
-            CheckeredMaterial(WHITE, BLACK, 1, 0.1, 1, 0.3, 200), Vector3D(0, 1, 0), 200
+            CheckeredMaterial(WHITE, BLACK, 1, 0.1, 1, 0.3, 200), Vector3D(0, 1, 0), 0
         )
     )
     scene.objects.append(
-        Sphere(Material(MAGENTA, 1, 1, 8, 0.5), Vector3D(140, -100, 0), 100)
+        Sphere(Material(MAGENTA, 1, 1, 8, 0.5), Vector3D(0, 250, 750), 250)
     )
     scene.objects.append(
-        Sphere(Material(YELLOW, 1, 1, 8, 0.5), Vector3D(0, 0, 450), 200)
+        Sphere(Material(YELLOW, 1, 1, 8, 0.5), Vector3D(200, 150, 0), 100)
     )
     scene.objects.append(
-        Sphere(Material(CYAN, 1, 1, 8, 0.5), Vector3D(-140, -90, 0), 110)
+        Sphere(Material(CYAN, 1, 1, 8, 0.5), Vector3D(-150, 150, 50), 50)
     )
 
     scene.lights.append(AmbientLight(Color(0.05, 0.05, 0.05)))
@@ -44,12 +44,12 @@ if __name__ == "__main__":
     )
 
     camera = Camera.create_lookat(
-        Vector3D(0, 324, -532),
-        Vector3D(0, 0, 80),
+        Vector3D(0, 250, -750),
+        Vector3D(0, 150, 100),
         Vector3D(0, 1, 0),
         image.width / image.height,
     )
 
     engine = Engine(camera, scene, image, 4, 8)
     engine.render()
-    image.save_as_ppm("result.ppm")
+    image.save_as_ppm("image.ppm")
