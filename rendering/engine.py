@@ -5,10 +5,10 @@ from rendering.objects import Plane, Sphere
 from rendering.ray import Ray
 from threading import Thread
 from rendering.color import Color
-import math
 
 
 class Engine:
+    """An Engine has a camera, a scene, a resulting image, a maximem allowed depth as well as a number of threads."""
 
     BIAS = 0.0000001
 
@@ -20,9 +20,10 @@ class Engine:
         self.num_thread = num_thread
 
     def render(self):
+        """Renders the image using multiple threads."""
         step = self.image.height / self.num_thread
-        ranges = []
 
+        ranges = []
         for i in range(self.num_thread - 1):
             ranges.append((int(i * step), int(i * step + step)))
         ranges.append((int((self.num_thread - 1) * step), int(self.image.height)))
@@ -48,6 +49,7 @@ class Engine:
             self.image.data.extend(rows[i])
 
     def _sub_render(self, start, end, rows):
+        """Threaded rendering method."""
         for h in range(start, end):
             row = []
             for w in range(self.image.width):
@@ -62,6 +64,7 @@ class Engine:
             rows.append(row)
 
     def _nearest_obj(self, ray):
+        """Returns the nearest object intersected by the ray and None otherwise."""
         nearest_obj = None
         nearest_obj_dist = None
         for obj in self.scene.objects:
@@ -74,6 +77,7 @@ class Engine:
         return (nearest_obj, nearest_obj_dist)
 
     def _trace_ray(self, ray, depth, from_inside=False):
+        """Returns the color evaluated by a given ray."""
         color = Color(0, 0, 0)
 
         if depth > self.max_depth:
@@ -81,23 +85,23 @@ class Engine:
         (nearest_obj, nearest_obj_dist) = self._nearest_obj(ray)
         if not nearest_obj:
             return color
-        if nearest_obj_dist:  # might remove the condition
-            pos = ray.origin + ray.direction * nearest_obj_dist
-            col = nearest_obj.color_at(pos)
-            norm = nearest_obj.normal_at(pos)
-            norm = -norm if from_inside else norm
-            pos += norm * Engine.BIAS
 
-            for light in self.scene.lights:
-                color = light.affect(
-                    color, col, pos, norm, ray, nearest_obj, self.scene.objects
-                )
+        pos = ray.origin + ray.direction * nearest_obj_dist
+        col = nearest_obj.color_at(pos)
+        norm = nearest_obj.normal_at(pos)
+        norm = -norm if from_inside else norm
+        pos += norm * Engine.BIAS
 
-            if nearest_obj.material.reflection_rate:
-                color += (
-                    col
-                    * self._trace_ray(Ray(pos, norm.reflect(-ray.direction)), depth + 1)
-                    * nearest_obj.material.reflection_rate
-                )
+        for light in self.scene.lights:
+            color = light.affect(
+                color, col, pos, norm, ray, nearest_obj, self.scene.objects
+            )
+
+        if nearest_obj.material.reflection_rate:
+            color += (
+                col
+                * self._trace_ray(Ray(pos, norm.reflect(-ray.direction)), depth + 1)
+                * nearest_obj.material.reflection_rate
+            )
 
         return color
