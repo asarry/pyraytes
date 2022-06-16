@@ -2,9 +2,51 @@
 
 Pyraytes is a basic Python ray tracer.
 
-![A resulting image](image.png "An example of what can be done with this ray tracer")
+## Samples
 
-### Helpful ressources
+<figure>
+    <img src="samples/png/ambient.png" alt="ambient" style="width:100%">
+    <figcaption align = "center">
+        <b>Fig.1 - Ambient light</b>
+    </figcaption>
+</figure>
+
+<figure>
+    <img src="samples/png/directional.png" alt="directional" style="width:100%">
+    <figcaption align = "center">
+        <b>Fig.2 - Directional light</b>
+    </figcaption>
+</figure>
+
+<figure>
+    <img src="samples/png/point.png" alt="point" style="width:100%">
+    <figcaption align = "center">
+        <b>Fig.3 - Point light</b>
+    </figcaption>
+</figure>
+
+<figure>
+    <img src="samples/png/ambient_directional.png" alt="ambient_directional" style="width:100%">
+    <figcaption align = "center">
+        <b>Fig.4 - Ambient & Directional light</b>
+    </figcaption>
+</figure>
+
+<figure>
+    <img src="samples/png/ambient_point.png" alt="ambient_point" style="width:100%">
+    <figcaption align = "center">
+        <b>Fig.5 - Ambient & Point light</b>
+    </figcaption>
+</figure>
+
+<figure>
+    <img src="samples/png/directional_point.png" alt="directional_point" style="width:100%">
+    <figcaption align = "center">
+        <b>Fig.6 - Directional & Point light</b>
+    </figcaption>
+</figure>
+
+## Helpful ressources
 
 [Ray tracing - Wikipedia](https://en.wikipedia.org/wiki/Ray_tracing_\(graphics\))
 
